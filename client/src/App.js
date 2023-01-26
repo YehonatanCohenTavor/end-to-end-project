@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { UserProvider } from './context';
 import Login from './components/login';
+import Info from './components/info';
+import Todos from './components/todos';
 import HomePage from './components/homePage';
 import Posts from './components/posts';
 
@@ -14,9 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/:username/homePage" element={<HomePage />} >
-            {/* <Route path="/:username/info" element={<Info />} /> */}
+            <Route path="/:username/homePage/info" element={<Info />} />
             <Route path="/:username/homePage/posts" element={<Posts />} />
-            {/* <Route path="/:username/todos" element={<Todos />} /> */}
+            <Route path="/:username/homePage/todos" element={<Todos />} />
           </Route>
         </Routes>
       </Router>
