@@ -7,8 +7,10 @@ const validateLogin = require('../modules/validateLogin');
 
 
 router.post('/login',validateLogin, (req, res, next) => {
-    connection.query(`SELECT * FROM users WHERE username=${req.body.username};`, (err,result) => {
+  console.log(req.body)
+    connection.query(`SELECT * FROM users WHERE username='${req.body.username}';`, (err,result) => {
       if (err) console.log(err);
+      console.log(result)
       res.json(result);
     })
 })
