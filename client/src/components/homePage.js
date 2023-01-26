@@ -17,10 +17,16 @@ export default function HomePage() {
         navigate('/')
     }
 
+    let onlineUser = JSON.parse(localStorage.getItem('onlineUser'))
+
+    useEffect(() => {
+        setUser(onlineUser)
+    }, [user])
+
 
     return (
-        <div>
-            <h3>hello {user} ,</h3>
+        <div className='navContainer'>
+            <h3>hello , {onlineUser} </h3>
 
             <Link
                 to={`/:${user}/homePage`}
