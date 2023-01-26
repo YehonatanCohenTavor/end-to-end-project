@@ -26,7 +26,7 @@ router.get('/:todo_id', function (req, res, next) {
 
 
 router.post('/', function ({ body }, res, next) {
-    connection.query(`INSERT INTO todos ( user_id , task,completed) VALUES(${body.user_id} , ${body.task} , ${body.completed?body.completed:"DEFAULT"});`, function (err, result) {
+    connection.query(`INSERT INTO todos ( user_id , task,completed) VALUES(${body.user_id} , '${body.task}' , DEFAULT);`, function (err, result) {
       if (err) console.log(err);
       console.log('todo added successfully');
       connection.query(`SELECT * FROM todos where  todo_id = ${result.insertId};`, function (err, result) {

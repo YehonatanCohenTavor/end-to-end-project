@@ -15,6 +15,14 @@ router.post('/login',validateLogin, (req, res, next) => {
     })
 })
 
+router.get('/:user_id', (req, res, next) => {
+    connection.query(`SELECT * FROM users WHERE user_id='${req.params.user_id}';`, (err,result) => {
+      if (err) console.log(err);
+      console.log(result)
+      res.json(result);
+    })
+})
+
 
 router.post('/', function ({ body }, res, next) {
   connection.query(`INSERT INTO users (full_name,username,email,address,city,phone) VALUES(${body.full_name},${body.username},${body.email},${body.address},${body.city},${body.phone});`, function (err, result) {
