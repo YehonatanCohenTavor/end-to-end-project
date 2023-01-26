@@ -32,7 +32,7 @@ router.get('/:post_id/comments', function (req, res, next) {
 });
 
 router.post('/', function ({ body }, res, next) {
-    connection.query(`INSERT INTO posts (body , user_id) VALUES(${body.body} , ${body.user_id});`, function (err, result) {
+    connection.query(`INSERT INTO posts (body , user_id) VALUES('${body.body}' , ${body.user_id});`, function (err, result) {
         if (err) console.log(err);
         console.log('post added successfully');
         connection.query(`SELECT * FROM posts WHERE post_id=${result.insertId};`, function (err, result) {

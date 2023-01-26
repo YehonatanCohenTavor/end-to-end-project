@@ -23,7 +23,7 @@ export default function Login() {
         const json = await data.json();
         console.log(json);
         if(json){
-            localStorage.setItem('onlineUser', JSON.stringify(json[0].username))
+            localStorage.setItem('onlineUser', JSON.stringify({username:json[0].username,user_id:json[0].user_id}))
             setUser(json[0].username);
             navigate(`/${user}/homePage`);
         }else{
